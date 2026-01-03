@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scorpio Code | Build • Collaborate • Deploy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #7f5cff;
+  --secondary: #00f7ff;
+  --dark: #0b0f1a;
+  --card: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #121a3a, #05070f);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 18px 60px;
+  background: rgba(5,7,15,0.75);
+  backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+nav h1 {
+  font-weight: 700;
+  color: var(--secondary);
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+nav ul li {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+nav ul li:hover {
+  opacity: 1;
+  color: var(--secondary);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 60px;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero h2 {
+  font-size: 3.4rem;
+  line-height: 1.2;
+}
+
+.hero span {
+  color: var(--secondary);
+}
+
+.hero p {
+  margin: 22px 0;
+  opacity: 0.85;
+}
+
+.hero button {
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  transform: scale(1.05);
+}
+
+/* FEATURES */
+.features {
+  padding: 100px 60px;
+}
+
+.features h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 30px;
+  backdrop-filter: blur(20px);
+  transition: 0.35s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 40px rgba(0,247,255,0.15);
+}
+
+.card h4 {
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+/* DASHBOARD */
+.dashboard {
+  padding: 100px 60px;
+}
+
+.dashboard-box {
+  background: var(--glass);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+}
+
+.sidebar {
+  background: rgba(0,0,0,0.3);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.sidebar div {
+  margin-bottom: 14px;
+  opacity: 0.8;
+}
+
+.editor {
+  background: #0e1326;
+  border-radius: 16px;
+  padding: 20px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #9dfcff;
+}
+
+/* CTA */
+.cta {
+  padding: 100px 40px;
+  text-align: center;
+}
+
+.cta h2 {
+  font-size: 2.8rem;
+}
+
+.cta button {
+  margin-top: 30px;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  padding: 40px;
+  text-align: center;
+  opacity: 0.6;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav {
+    padding: 16px 24px;
+  }
+
+  .hero {
+    padding: 100px 24px;
+  }
+
+  .hero h2 {
+    font-size: 2.4rem;
+  }
+
+  .dashboard-box {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>🦂 Scorpio Code</h1>
+  <ul>
+    <li>Platform</li>
+    <li>Features</li>
+    <li>Docs</li>
+    <li>Login</li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>Code, Collaborate & Deploy<br><span>All in One Platform</span></h2>
+    <p>Scorpio Code adalah platform developer modern yang menggabungkan editor canggih, repository kolaboratif, dan cloud deploy instan.</p>
+    <button>Start Coding</button>
+  </div>
+</section>
+
+<section class="features">
+  <h3>Powerful Developer Tools</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>⚡ Cloud Code Editor</h4>
+      <p>Editor online seperti VS Studio dengan performa tinggi dan autosave.</p>
+    </div>
+    <div class="card">
+      <h4>🔗 Git Repository</h4>
+      <p>Version control, branching, dan collaboration seperti GitHub.</p>
+    </div>
+    <div class="card">
+      <h4>🚀 Instant Deploy</h4>
+      <p>Deploy aplikasi ke cloud dengan satu klik seperti Vercel.</p>
+    </div>
+    <div class="card">
+      <h4>🤖 AI Ready</h4>
+      <p>Integrasi AI untuk autocomplete, debugging, dan code review.</p>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard">
+  <div class="dashboard-box">
+    <div class="sidebar">
+      <div>📁 Projects</div>
+      <div>🌿 Branches</div>
+      <div>📦 Deployments</div>
+      <div>⚙ Settings</div>
+    </div>
+    <div class="editor">
+      <pre>
+function deployApp() {
+  console.log("Deploying to Scorpio Cloud...");
+}
+deployApp();
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Build Faster. Ship Smarter.</h2>
+  <button>Get Started Free</button>
+</section>
+
+<footer>
+  © 2026 Scorpio Code Platform. All Rights Reserved.
+</footer>
+
+</body>
+</html>
