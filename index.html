@@ -3,297 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scorpio Code | Build • Collaborate • Deploy</title>
+<title>Scorpio Code | SaaS Developer Platform</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --primary: #7f5cff;
-  --secondary: #00f7ff;
-  --dark: #0b0f1a;
-  --card: rgba(255,255,255,0.06);
-  --glass: rgba(255,255,255,0.08);
-  --border: rgba(255,255,255,0.12);
+:root{
+--primary:#7f5cff;
+--secondary:#00f7ff;
+--bg:#05070f;
+--panel:#0b1020;
+--glass:rgba(255,255,255,0.08);
+--border:rgba(255,255,255,0.12);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter}
+
+body{
+background:radial-gradient(circle at top,#121a3a,#05070f);
+color:#fff;
 }
 
-body {
-  background: radial-gradient(circle at top, #121a3a, #05070f);
-  color: #fff;
-  overflow-x: hidden;
+/* LAYOUT */
+.app{display:flex;min-height:100vh}
+.sidebar{
+width:240px;
+background:rgba(5,7,20,.9);
+backdrop-filter:blur(16px);
+padding:24px;
+}
+.sidebar h2{color:var(--secondary);margin-bottom:30px}
+.sidebar a{
+display:block;
+color:#aaa;
+text-decoration:none;
+margin:16px 0;
+cursor:pointer;
+}
+.sidebar a.active,
+.sidebar a:hover{color:var(--secondary)}
+
+.main{flex:1;padding:40px}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{
+background:var(--glass);
+border:1px solid var(--border);
+border-radius:16px;
+padding:24px;
+transition:.3s;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 0 30px rgba(0,247,255,.15)}
+
+/* PROJECTS */
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.project{
+background:var(--glass);
+padding:20px;
+border-radius:14px;
 }
 
-/* NAVBAR */
-nav {
-  position: fixed;
-  width: 100%;
-  padding: 18px 60px;
-  background: rgba(5,7,15,0.75);
-  backdrop-filter: blur(14px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
+/* EDITOR */
+.editor{
+background:#0e1326;
+border-radius:14px;
+padding:20px;
+font-family:monospace;
+color:#9dfcff;
+min-height:260px;
 }
 
-nav h1 {
-  font-weight: 700;
-  color: var(--secondary);
-  letter-spacing: 1px;
+/* TABLE */
+table{width:100%;border-collapse:collapse}
+td,th{padding:14px;border-bottom:1px solid var(--border)}
+
+/* DEPLOY */
+.deploy{
+background:var(--glass);
+padding:30px;
+border-radius:18px;
+text-align:center;
 }
 
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-
-nav ul li {
-  cursor: pointer;
-  opacity: 0.85;
-}
-
-nav ul li:hover {
-  opacity: 1;
-  color: var(--secondary);
-}
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 60px;
-}
-
-.hero-content {
-  max-width: 650px;
-}
-
-.hero h2 {
-  font-size: 3.4rem;
-  line-height: 1.2;
-}
-
-.hero span {
-  color: var(--secondary);
-}
-
-.hero p {
-  margin: 22px 0;
-  opacity: 0.85;
-}
-
-.hero button {
-  padding: 14px 32px;
-  border-radius: 50px;
-  border: none;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: #000;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hero button:hover {
-  transform: scale(1.05);
-}
-
-/* FEATURES */
-.features {
-  padding: 100px 60px;
-}
-
-.features h3 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 60px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 30px;
-  backdrop-filter: blur(20px);
-  transition: 0.35s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 40px rgba(0,247,255,0.15);
-}
-
-.card h4 {
-  color: var(--secondary);
-  margin-bottom: 10px;
-}
-
-/* DASHBOARD */
-.dashboard {
-  padding: 100px 60px;
-}
-
-.dashboard-box {
-  background: var(--glass);
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  padding: 30px;
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 20px;
-}
-
-.sidebar {
-  background: rgba(0,0,0,0.3);
-  border-radius: 16px;
-  padding: 20px;
-}
-
-.sidebar div {
-  margin-bottom: 14px;
-  opacity: 0.8;
-}
-
-.editor {
-  background: #0e1326;
-  border-radius: 16px;
-  padding: 20px;
-  font-family: monospace;
-  font-size: 0.9rem;
-  color: #9dfcff;
-}
-
-/* CTA */
-.cta {
-  padding: 100px 40px;
-  text-align: center;
-}
-
-.cta h2 {
-  font-size: 2.8rem;
-}
-
-.cta button {
-  margin-top: 30px;
-  padding: 16px 40px;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  border: none;
-  background: linear-gradient(135deg, var(--secondary), var(--primary));
-  cursor: pointer;
-}
-
-/* FOOTER */
-footer {
-  padding: 40px;
-  text-align: center;
-  opacity: 0.6;
+/* BUTTON */
+button{
+padding:14px 30px;
+border:none;
+border-radius:40px;
+background:linear-gradient(135deg,var(--secondary),var(--primary));
+font-weight:700;
+cursor:pointer;
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
-  nav {
-    padding: 16px 24px;
-  }
-
-  .hero {
-    padding: 100px 24px;
-  }
-
-  .hero h2 {
-    font-size: 2.4rem;
-  }
-
-  .dashboard-box {
-    grid-template-columns: 1fr;
-  }
+@media(max-width:768px){
+.sidebar{width:70px}
+.sidebar h2{font-size:1rem}
+.sidebar a{font-size:.8rem}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <h1>🦂 Scorpio Code</h1>
-  <ul>
-    <li>Platform</li>
-    <li>Features</li>
-    <li>Docs</li>
-    <li>Login</li>
-  </ul>
-</nav>
+<div class="app">
 
-<section class="hero">
-  <div class="hero-content">
-    <h2>Code, Collaborate & Deploy<br><span>All in One Platform</span></h2>
-    <p>Scorpio Code adalah platform developer modern yang menggabungkan editor canggih, repository kolaboratif, dan cloud deploy instan.</p>
-    <button>Start Coding</button>
-  </div>
-</section>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>🦂 Scorpio</h2>
+    <a onclick="openPage('dashboard')" class="active">Dashboard</a>
+    <a onclick="openPage('projects')">Projects</a>
+    <a onclick="openPage('editor')">Editor</a>
+    <a onclick="openPage('repo')">Repository</a>
+    <a onclick="openPage('deploy')">Deploy</a>
+    <a onclick="openPage('settings')">Settings</a>
+  </aside>
 
-<section class="features">
-  <h3>Powerful Developer Tools</h3>
-  <div class="grid">
-    <div class="card">
-      <h4>⚡ Cloud Code Editor</h4>
-      <p>Editor online seperti VS Studio dengan performa tinggi dan autosave.</p>
-    </div>
-    <div class="card">
-      <h4>🔗 Git Repository</h4>
-      <p>Version control, branching, dan collaboration seperti GitHub.</p>
-    </div>
-    <div class="card">
-      <h4>🚀 Instant Deploy</h4>
-      <p>Deploy aplikasi ke cloud dengan satu klik seperti Vercel.</p>
-    </div>
-    <div class="card">
-      <h4>🤖 AI Ready</h4>
-      <p>Integrasi AI untuk autocomplete, debugging, dan code review.</p>
-    </div>
-  </div>
-</section>
+  <!-- MAIN -->
+  <main class="main">
 
-<section class="dashboard">
-  <div class="dashboard-box">
-    <div class="sidebar">
-      <div>📁 Projects</div>
-      <div>🌿 Branches</div>
-      <div>📦 Deployments</div>
-      <div>⚙ Settings</div>
-    </div>
-    <div class="editor">
-      <pre>
-function deployApp() {
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active">
+      <h1>Developer Dashboard</h1><br>
+      <div class="cards">
+        <div class="card">🚀 Projects<br><b>12</b></div>
+        <div class="card">📦 Deployments<br><b>34</b></div>
+        <div class="card">🌿 Repositories<br><b>18</b></div>
+        <div class="card">⚡ Avg Build<br><b>1.2s</b></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="page">
+      <h1>Projects</h1><br>
+      <div class="project-grid">
+        <div class="project">
+          <h3>Landing Page</h3>
+          <p>Status: Production</p>
+        </div>
+        <div class="project">
+          <h3>AI Dashboard</h3>
+          <p>Status: Development</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITOR -->
+    <section id="editor" class="page">
+      <h1>Cloud Code Editor</h1><br>
+      <div class="editor">
+<pre>
+function deployScorpio() {
   console.log("Deploying to Scorpio Cloud...");
 }
-deployApp();
-      </pre>
-    </div>
-  </div>
-</section>
+deployScorpio();
+</pre>
+      </div>
+    </section>
 
-<section class="cta">
-  <h2>Build Faster. Ship Smarter.</h2>
-  <button>Get Started Free</button>
-</section>
+    <!-- REPOSITORY -->
+    <section id="repo" class="page">
+      <h1>Repository</h1><br>
+      <table>
+        <tr><th>Branch</th><th>Commit</th><th>Status</th></tr>
+        <tr><td>main</td><td>#f29d2</td><td>✔ Stable</td></tr>
+        <tr><td>dev</td><td>#a12bc</td><td>⚠ Testing</td></tr>
+      </table>
+    </section>
 
-<footer>
-  © 2026 Scorpio Code Platform. All Rights Reserved.
-</footer>
+    <!-- DEPLOY -->
+    <section id="deploy" class="page">
+      <h1>Deploy Center</h1><br>
+      <div class="deploy">
+        <p>Status: Ready</p><br>
+        <button>Deploy Now</button>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="page">
+      <h1>Account Settings</h1><br>
+      <label>Username</label><br>
+      <input style="padding:12px;width:100%;margin:10px 0"><br>
+      <label>API Key</label><br>
+      <input style="padding:12px;width:100%;margin:10px 0"><br>
+      <button>Save Settings</button>
+    </section>
+
+  </main>
+</div>
+
+<script>
+function openPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
 
 </body>
 </html>
